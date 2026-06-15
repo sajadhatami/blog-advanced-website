@@ -1,0 +1,29 @@
+version: '3.8'
+
+# services
+services:
+  # app service
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: advance-course
+    container_name: advance-course-con
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config:/app
+  # db:
+  #   image: postgres:17
+  #   container_name: postgres-db
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: admin
+  #     POSTGRES_PASSWORD: admin
+  #     POSTGRES_DB: admin
+  #   ports:
+  #     - "5432:5432"
+    environment:
+      - SECRET_KEY=test
+      - DEBUG=True
+      - ALLOWED_HOSTS=0.0.0.0,localhost
